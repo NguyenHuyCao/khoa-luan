@@ -1,0 +1,98 @@
+/* SideBar.scss */
+
+/* Bao bọc toàn bộ Sidebar */
+.side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px; /* Chiều rộng Sidebar */
+  height: 100vh; /* Chiều cao toàn màn hình */
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Phần tiêu đề của Sidebar */
+  .title-page {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px 15px;
+    background-color: #ffffff; /* Nền riêng */
+    border-bottom: 1px solid #ddd;
+    z-index: 1;
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background-color: #ccc; /* Placeholder cho logo */
+      margin-right: 10px;
+      flex-shrink: 0;
+      border-radius: 50%; /* Thêm bo tròn logo */
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #009d63;
+      white-space: nowrap; /* Đảm bảo chữ không bị xuống dòng */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  /* Phần danh sách điều hướng */
+  .sidebar-navigate {
+    flex: 1; /* Chiếm phần còn lại của Sidebar */
+    overflow-y: auto; /* Hỗ trợ cuộn nếu danh sách dài */
+    padding: 0;
+    margin-top: 20px;
+
+    .item-navigate {
+      display: flex;
+      align-items: center;
+      padding: 20px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      /* Màu mặc định */
+      .icon-item {
+        color: #bbbec5; /* Màu xám mặc định cho icon */
+        margin-right: 10px;
+        flex-shrink: 0;
+        transition: color 0.3s; /* Hiệu ứng mượt khi thay đổi màu */
+      }
+
+      .name-navigate {
+        font-size: 16px;
+        font-weight: 500;
+        color: #bbbec5; /* Màu xám mặc định cho chữ */
+        white-space: nowrap; /* Đảm bảo chữ không bị xuống dòng */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.3s; /* Hiệu ứng mượt khi thay đổi màu */
+      }
+
+      /* Hiệu ứng khi hover */
+      &:hover {
+        background-color: #f0f0f0;
+
+        .icon-item,
+        .name-navigate {
+          color: #009d63; /* Chuyển sang màu xanh lá */
+        }
+      }
+
+      /* Hiệu ứng khi click (active state) */
+      &.active {
+        background-color: #e6f7f0; /* Màu nền nhấn */
+
+        .icon-item,
+        .name-navigate {
+          color: #009d63; /* Màu xanh lá cây */
+        }
+      }
+    }
+  }
+}

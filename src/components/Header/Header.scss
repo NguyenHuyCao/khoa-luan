@@ -1,0 +1,80 @@
+/* Header.scss */
+.header {
+  display: flex;
+  justify-content: space-between; /* Đặt khoảng cách đều giữa title và info user */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding: 10px 30px; /* Khoảng cách trong */
+  background-color: #c1efde; /* Màu nền header */
+
+  /* Phần title bên trái */
+  .title {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+
+    .icon-show-navigate {
+      font-size: 25px; /* Kích thước icon */
+      margin-right: 10px; /* Khoảng cách giữa icon và tên */
+      color: #009d63; /* Màu icon */
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #007b50; /* Đổi màu khi hover */
+      }
+    }
+
+    .name-page {
+      font-size: 23px; /* Kích thước chữ */
+      font-weight: bold;
+      color: #333; /* Màu chữ */
+      white-space: nowrap; /* Không xuống dòng */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Hiển thị dấu "..." nếu tên quá dài */
+    }
+  }
+
+  /* Phần info user bên phải */
+  .info-user {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .icon-user {
+      font-size: 24px; /* Kích thước icon user */
+      color: #666; /* Màu icon */
+      margin-right: 5px; /* Khoảng cách giữa icon user và caret */
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #333; /* Đổi màu khi hover */
+      }
+    }
+
+    .icon-down {
+      font-size: 10px; /* Kích thước icon caret */
+      color: #666; /* Màu icon */
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #333; /* Đổi màu khi hover */
+      }
+    }
+  }
+
+  .logout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    // border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e60000;
+    }
+  }
+}
