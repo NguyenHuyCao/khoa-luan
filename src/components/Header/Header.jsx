@@ -1,4 +1,5 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Header.scss";
 import { FaUserLarge } from "react-icons/fa6";
 import { Dropdown, Menu } from "antd";
@@ -6,11 +7,14 @@ import { DownOutlined } from "@ant-design/icons";
 import { RiMenuUnfold2Fill } from "react-icons/ri";
 
 const Header = ({ title }) => {
-  // Tạo menu cho dropdown
+  const navigate = useNavigate();
+
   const menu = (
     <Menu>
       <Menu.Item key="1">
-        <button className="logout-button">Thoát</button>
+        <button className="logout-button" onClick={() => navigate("/login")}>
+          Thoát
+        </button>
       </Menu.Item>
     </Menu>
   );

@@ -1,0 +1,102 @@
+.sign-up-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.sign-up-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  text-align: center;
+}
+
+.sign-up-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #1890ff;
+  }
+}
+
+.sign-up-btn {
+  background-color: #1890ff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  // padding: 12px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #40a9ff;
+  }
+}
+
+.login-btn {
+  background-color: #f0f0f0;
+  color: #1890ff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  // padding: 12px;
+
+  &:hover {
+    background-color: #e6f7ff;
+  }
+}
+
+.ant-divider {
+  margin: 24px 0;
+  color: #bfbfbf;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ant-btn-block {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .sign-up-container {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .sign-up-title {
+    font-size: 20px;
+  }
+
+  .input-field {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .sign-up-btn,
+  .login-btn {
+    // padding: 10px;
+    font-size: 14px;
+  }
+}

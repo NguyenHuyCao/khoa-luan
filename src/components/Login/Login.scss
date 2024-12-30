@@ -1,0 +1,122 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: #1890ff;
+  }
+}
+
+.login-btn {
+  background-color: #1890ff;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  // padding: 12px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #40a9ff;
+  }
+}
+
+.google-btn {
+  background-color: #db4437;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  // padding: 12px;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #c1351d;
+  }
+
+  .ant-btn-icon {
+    margin-right: 8px;
+  }
+}
+
+.ant-divider {
+  margin: 24px 0;
+  color: #bfbfbf;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ant-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.signin {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.btn-signin {
+  color: #1890ff;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-container {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .input-field {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .login-btn,
+  .google-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

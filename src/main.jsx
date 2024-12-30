@@ -7,6 +7,8 @@ import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import ProductCategories from "./components/Categories/ProductCategories.jsx";
 import Products from "./components/Products/Products.jsx";
 import ManageUser from "./components/ManageUser/ManageUser.jsx";
+import LoginPage from "./components/Login/Login.jsx";
+import SigninPage from "./components/Signin/Signin.jsx";
 // import ErrorPage from "./ErrorPage"; // Nếu có trang lỗi, đảm bảo import đúng cách
 
 // Cấu hình router
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       },
     ],
     // errorElement: <ErrorPage />, // Kích hoạt trang lỗi nếu cần
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/signin",
+    element: <SigninPage />,
   },
 ]);
 
