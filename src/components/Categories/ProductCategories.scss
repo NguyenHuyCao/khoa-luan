@@ -1,0 +1,51 @@
+.manage-categories-content {
+  display: flex;
+  justify-content: space-between; /* Căn đều 2 thành phần */
+  align-items: flex-start; /* Căn trên cùng dòng */
+  padding: 20px;
+
+  .manage-categories-product {
+    flex: 1; /* Thành phần này chiếm toàn bộ không gian trừ phần thêm danh mục */
+    margin-right: 20px; /* Khoảng cách với thành phần bên phải */
+
+    .title-categories-product {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .table-manage {
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: #fff;
+      border-radius: 5px;
+    }
+  }
+
+  .add-category-product {
+    width: 300px; /* Đặt chiều rộng cố định cho phần thêm danh mục */
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    .title-add {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .add-product-content {
+      display: flex;
+      flex-direction: column;
+
+      Input {
+        margin-bottom: 10px; /* Khoảng cách giữa ô nhập và nút lưu */
+      }
+
+      Button {
+        align-self: flex-end; /* Căn nút lưu sang phải */
+      }
+    }
+  }
+}

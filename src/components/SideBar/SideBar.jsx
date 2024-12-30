@@ -5,6 +5,7 @@ import { AiFillShop } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
@@ -20,7 +21,9 @@ const SideBar = () => {
         </div>
         <div className="item-navigate">
           <AiFillProduct className="icon-item" />
-          <div className="name-navigate">Danh mục sản phẩm</div>
+          <div className="name-navigate">
+            <Link to={"/categories"}>Danh mục sản phẩm</Link>
+          </div>
         </div>
         <div className="item-navigate">
           <AiFillShop className="icon-item" />

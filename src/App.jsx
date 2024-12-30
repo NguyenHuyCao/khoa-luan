@@ -5,7 +5,7 @@ import SideBar from "./components/SideBar/SideBar.jsx";
 function App() {
   return (
     <>
-      <div className="header"></div>
+      {/* <div className="header"></div> */}
       <div className="navigate">
         <SideBar />
         <div className="content">
