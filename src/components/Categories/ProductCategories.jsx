@@ -26,7 +26,7 @@ const ProductCategories = () => {
       key: "categories",
     },
     {
-      title: "Action",
+      title: "Trạng thái",
       render: (_, record) => (
         <Space size="middle">
           <Button>Sửa</Button>
@@ -57,7 +57,7 @@ const ProductCategories = () => {
 
   return (
     <>
-      <Header title="Product Categories" />
+      <Header title="Quản lý danh mục sản phẩm" />
       <div className="manage-categories-content">
         <div className="manage-categories-product">
           <h2 className="title-categories-product">
