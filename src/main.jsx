@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import ProductCategories from "./components/Categories/ProductCategories.jsx";
 import Products from "./components/Products/Products.jsx";
+import ManageUser from "./components/ManageUser/ManageUser.jsx";
 // import ErrorPage from "./ErrorPage"; // Nếu có trang lỗi, đảm bảo import đúng cách
 
 // Cấu hình router
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/manage-user",
+        element: <ManageUser />,
       },
     ],
     // errorElement: <ErrorPage />, // Kích hoạt trang lỗi nếu cần

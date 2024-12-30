@@ -1,0 +1,69 @@
+.users-container {
+  padding: 20px;
+  // background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .users-manage {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .ant-btn-primary {
+      align-self: flex-start;
+    }
+
+    .ant-table {
+      background-color: #fff;
+      border-radius: 8px;
+    }
+  }
+}
+
+.ant-modal {
+  .ant-modal-header {
+    background-color: #f0f2f5;
+    border-bottom: 1px solid #d9d9d9;
+
+    .ant-modal-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 24px;
+
+    .ant-form-item {
+      margin-bottom: 16px;
+
+      label {
+        font-weight: 500;
+        color: #595959;
+      }
+
+      .ant-input,
+      .ant-select-selector {
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .ant-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .ant-btn {
+      padding: 6px 16px;
+    }
+  }
+}

@@ -39,7 +39,9 @@ const SideBar = () => {
         </div>
         <div className="item-navigate">
           <FaUser className="icon-item" />
-          <div className="name-navigate">Quản lý người dùng</div>
+          <div className="name-navigate">
+            <Link to={"/manage-user"}>Quản lý người dùng</Link>
+          </div>
         </div>
         <div className="item-navigate">
           <AiFillMessage className="icon-item" />
