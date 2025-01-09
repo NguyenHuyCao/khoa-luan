@@ -1,57 +1,48 @@
 import { Button, Space, Table, Modal, Input, Form, Select } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ManageUser.scss"; // Import file SCSS
 import Header from "../Header/Header";
+import { addUser, getUsers } from "../../services/apiServices";
 
 const ManageUser = () => {
-  const [users, setUsers] = useState([
-    {
-      key: "1",
-      name: "Nguyễn Văn A",
-      email: "nguyenvana@example.com",
-      phone: "0123456789",
-      address: "Hà Nội",
-      role: "Admin",
-    },
-    {
-      key: "2",
-      name: "Trần Thị B",
-      email: "tranthib@example.com",
-      phone: "0987654321",
-      address: "TP.HCM",
-      role: "User",
-    },
-    {
-      key: "3",
-      name: "Lê Văn C",
-      email: "levanc@example.com",
-      phone: "0123344556",
-      address: "Đà Nẵng",
-      role: "User",
-    },
-  ]);
-
+  const [users, setUsers] = useState(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
     phone: "",
     address: "",
-    role: "User",
+    password: "", // Thêm trường password
   });
-
   const [editingUser, setEditingUser] = useState(null);
+
+  useEffect(() => {
+    const fetchGetUsers = async () => {
+      try {
+        const res = await getUsers();
+        console.log("res", res);
+        setUsers(res.data);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+      } catch (error) {
+        console.error("Error fetching users:", error.message);
+      }
+    };
+
+    fetchGetUsers();
+  }, []);
 
   const columns = [
     {
       title: "STT",
-      dataIndex: "key",
-      key: "key",
+      dataIndex: "id",
+      key: "id",
     },
     {
       title: "Họ và tên",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "fullname",
+      key: "fullname",
     },
     {
       title: "Email",
@@ -60,18 +51,13 @@ const ManageUser = () => {
     },
     {
       title: "Số điện thoại",
-      dataIndex: "phone",
-      key: "phone",
-    },
-    {
-      title: "Địa chỉ",
-      dataIndex: "address",
-      key: "address",
+      dataIndex: "phone_number",
+      key: "phone_number",
     },
     {
       title: "Quyền",
-      dataIndex: "role",
-      key: "role",
+      dataIndex: "role_name",
+      key: "role_name",
     },
     {
       title: "Trạng thái",
@@ -83,11 +69,32 @@ const ManageUser = () => {
     },
   ];
 
-  const handleAddUser = () => {
-    const newKey = (users.length + 1).toString();
-    setUsers([...users, { key: newKey, ...newUser }]);
-    setNewUser({ name: "", email: "", phone: "", address: "", role: "User" });
-    setIsAddModalOpen(false);
+  const handleAddUser = async () => {
+    console.log("New user data:", newUser); // Thêm dòng này để kiểm tra dữ liệu
+    try {
+      const res = await addUser(
+        newUser.name,
+        newUser.email,
+        newUser.phone,
+        newUser.address,
+        newUser.password
+      );
+      console.log("res", res);
+      if (res.status === 201) {
+        setIsAddModalOpen(false);
+        setNewUser({
+          name: "",
+          email: "",
+          phone: "",
+          address: "",
+          password: "",
+        });
+      } else {
+        console.error("Failed to add user:", res.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding user:", error.message);
+    }
   };
 
   const handleEditUser = () => {
@@ -112,7 +119,7 @@ const ManageUser = () => {
       {/* Modal Thêm người dùng */}
       <Modal
         title="Thêm người dùng mới"
-        visible={isAddModalOpen}
+        open={isAddModalOpen}
         onOk={handleAddUser}
         onCancel={() => setIsAddModalOpen(false)}
         okText="Thêm"
@@ -153,14 +160,14 @@ const ManageUser = () => {
               placeholder="Nhập địa chỉ"
             />
           </Form.Item>
-          <Form.Item label="Quyền">
-            <Select
-              value={newUser.role}
-              onChange={(value) => setNewUser({ ...newUser, role: value })}
-            >
-              <Select.Option value="Admin">Admin</Select.Option>
-              <Select.Option value="User">User</Select.Option>
-            </Select>
+          <Form.Item label="Mật khẩu">
+            <Input.Password
+              value={newUser.password}
+              onChange={(e) =>
+                setNewUser({ ...newUser, password: e.target.value })
+              }
+              placeholder="Nhập mật khẩu"
+            />
           </Form.Item>
         </Form>
       </Modal>
