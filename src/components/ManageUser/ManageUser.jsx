@@ -20,7 +20,7 @@ const ManageUser = () => {
     const fetchGetUsers = async () => {
       try {
         const res = await getUsers();
-        console.log("res", res);
+        console.log("res", res.data);
         setUsers(res.data);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -70,18 +70,33 @@ const ManageUser = () => {
   ];
 
   const handleAddUser = async () => {
-    console.log("New user data:", newUser); // Thêm dòng này để kiểm tra dữ liệu
+    console.log("New user data:", newUser); // Kiểm tra dữ liệu đầu vào
     try {
-      const res = await addUser(
-        newUser.name,
-        newUser.email,
-        newUser.phone,
-        newUser.address,
-        newUser.password
-      );
+      const response = await fetch("http://localhost:8080/users", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: newUser.name, // Thay fullname thành name
+          email: newUser.email,
+          phone: newUser.phone, // Thay phone_number thành phone
+          address: newUser.address,
+          password: newUser.password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const res = await response.json();
       console.log("res", res);
-      if (res.status === 201) {
-        setIsAddModalOpen(false);
+
+      if (res.status === "success") {
+        // Kiểm tra phản hồi từ server
+        setIsAddModalOpen(false); // Đóng modal khi thêm thành công
         setNewUser({
           name: "",
           email: "",
@@ -89,8 +104,16 @@ const ManageUser = () => {
           address: "",
           password: "",
         });
+
+        // Fetch lại danh sách người dùng
+        const fetchGetUsers = async () => {
+          const usersRes = await fetch("http://localhost:8080/users");
+          const usersData = await usersRes.json();
+          setUsers(usersData);
+        };
+        fetchGetUsers();
       } else {
-        console.error("Failed to add user:", res.statusText);
+        console.error("Failed to add user:", res.message);
       }
     } catch (error) {
       console.error("Error adding user:", error.message);
